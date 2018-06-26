@@ -1,0 +1,5 @@
+subscription OnNotification {
+  Notification {
+    id
+  }
+}

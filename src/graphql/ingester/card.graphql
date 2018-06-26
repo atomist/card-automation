@@ -1,0 +1,132 @@
+type CardSdmGoal {
+    name: String
+    description: String
+    link: String
+    logLink: String
+    environment: String
+    state: String
+    ts: Int
+    actions: [CardAction]
+}
+
+type CardSdmGoalSet {
+    goalSet: String
+    goalSetId: String
+    registration: String
+    state: String
+    duration: Int
+    ts: Int
+    actions: [CardAction]
+    goals: [CardSdmGoal]
+}
+
+type CardRepository {
+    owner: String
+    name: String
+    slug: String @searchable
+}
+
+type CardCollaborator {
+    avatar: String
+    login: String @searchable
+    link: String
+}
+
+type CardProvenance {
+    name: String
+}
+
+type CardTitle {
+    icon: String
+    text: String @searchable
+}
+
+type CardBody {
+    avatar: String
+    login: String @searchable
+    text: String @searchable
+    hint: String
+    ts: Int
+}
+
+type CardReaction {
+    avatar: String
+    login: String @searchable
+    reaction: String
+}
+
+type CardCorrelation {
+    type: String
+    icon: String
+    title: String @searchable
+    shortTitle: String @searchable
+    link: String
+    body: CorrelationBody
+    ts: Int
+}
+
+type CorrelationBody {
+    icon: String
+    text: String @searchable
+}
+
+type CardEvent {
+    icon: String
+    text: String @searchable
+    ts: Int
+    actions: [CardAction]
+    actionGroups: [CardActionGroup]
+}
+
+type CardAction {
+    text: String
+    type: String
+    registration: String
+    command: String
+    role: String
+    parameters: [CardActionParameter]
+    parameterName: String
+    parameterOptions: [CardActionParameterOption]
+    parameterOptionGroups: [CardActionParameterOptionGroup]
+}
+
+type CardActionGroup {
+    text: String
+    actions: [CardAction]
+}
+
+type CardActionParameter {
+    name: String
+    value: String
+}
+
+type CardActionParameterOption {
+    name: String
+    value: String
+}
+
+type CardActionParameterOptionGroup {
+    name: String
+    options: [CardActionParamterOption]
+}
+
+type Card @rootType {
+    ts: Int
+    ttl: Int
+    post: String
+    key: String @compositeId
+    repository(owner: [String], name: [String], slug: [String]): CardRepository
+    type: String
+    shortTitle: String
+    title: CardTitle
+    body: CardBody
+    goalSets: [CardSdmGoalSet]
+    correlations: [CardCorrelation]
+    collaborators(login: String): [CardCollaborator]
+    events: [CardEvent]
+    actions: [CardAction]
+    actionGroups: [CardActionGroups]
+    comments: [CardBody]
+    reactions: [CardReaction]
+    provenance(name: String): [CardProvenance]
+}

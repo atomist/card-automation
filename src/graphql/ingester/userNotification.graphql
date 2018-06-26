@@ -1,0 +1,10 @@
+type UserNotification @rootType {
+    ts: Int
+    key: String @compositeId
+    ttl: Int
+    post: String
+    login: String
+    contentType: String
+    body: String
+    actions: [CardAction]
+}

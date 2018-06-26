@@ -1,0 +1,6 @@
+subscription OnUserNotification {
+  UserNotification {
+    id
+    login
+  }
+}

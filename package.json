@@ -1,0 +1,94 @@
+{
+  "name": "@atomist/card-automation",
+  "description": "Automation client to define the global Card ingestion endpoint",
+  "version": "0.1.0",
+  "author": "Atomist",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomist/card-automation.git"
+  },
+  "homepage": "https://github.com/atomist/card-automation#readme",
+  "bugs": {
+    "url": "https://github.com/atomist/card-automation/issues"
+  },
+  "keywords": [
+    "atomist",
+    "automation",
+    "card"
+  ],
+  "dependencies": {
+    "@atomist/automation-client": "0.17.4-20180621144910",
+    "@atomist/automation-client-ext-logzio": "0.1.0-20180613131229",
+    "@atomist/automation-client-ext-raven": "0.1.0-20180613131132",
+    "@atomist/slack-messages": "^0.12.1",
+    "app-root-path": "^2.0.1",
+    "body-parser": "^1.18.2",
+    "config": "^1.30.0",
+    "express-auth-parser": "^0.1.2",
+    "hot-shots": "^5.1.0",
+    "lodash": "^4.17.10",
+    "logzio-nodejs": "^0.4.10",
+    "pusher": "^1.5.1",
+    "serialize-error": "^2.1.0",
+    "stripchar": "^1.2.1",
+    "winston-logzio": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/app-root-path": "^1.2.4",
+    "@types/async": "2.0.47",
+    "@types/config": "0.0.33",
+    "@types/lodash": "^4.14.100",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.1",
+    "@types/power-assert": "^1.4.29",
+    "copyfiles": "^1.2.0",
+    "espower-typescript": "^8.1.3",
+    "graphql-code-generator": "^0.8.14",
+    "mocha": "^5.0.0",
+    "nodemon": "^1.14.12",
+    "npm-run-all": "^4.1.2",
+    "power-assert": "^1.4.4",
+    "rimraf": "^2.6.2",
+    "supervisor": "^0.12.0",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.8.3",
+    "typescript-formatter": "^7.2.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "autostart": "nodemon --watch src --ext ts --exec ts-node -- node_modules/@atomist/automation-client/start.client.js",
+    "autotest": "supervisor --watch src,test --extensions ts --no-restart-on exit --quiet --exec npm -- test",
+    "build": "npm-run-all lint compile test typedoc",
+    "clean": "npm-run-all clean:js clean:build",
+    "clean:build": "npm-run-all clean:gql clean:ts clean:run",
+    "clean:dist": "npm-run-all clean clean:npm",
+    "clean:gql": "rimraf src/typings/types.ts",
+    "clean:js": "rimraf \"{src,test}/**/*.js\"",
+    "clean:npm": "rimraf node_modules",
+    "clean:run": "rimraf *-v8.log profile.txt build",
+    "clean:ts": "rimraf build",
+    "compile": "npm-run-all git:info compile:kube-fix compile:gql compile:ts",
+    "compile:gql": "npm-run-all gql:gen gql:copy",
+    "compile:kube-fix": "copyfiles --flat assets/kubernetes-client/index.d.ts node_modules/kubernetes-client/typings",
+    "compile:ts": "tsc --project .",
+    "fmt": "tsfmt --replace",
+    "git:info": "atomist git",
+    "gql:copy": "copyfiles \"src/**/*.graphql\" build",
+    "gql:gen": "atomist gql-gen --no-install \"{graphql,src}/**/*.graphql\"",
+    "lint": "tslint --format verbose --project . --exclude \"{build,node_modules}/**\" \"**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "atomist start --no-install --no-compile",
+    "test": "mocha --require espower-typescript/guess \"test/**/*.ts\"",
+    "test:one": "mocha --require espower-typescript/guess \"test/**/${TEST:-*.ts}\"",
+    "typedoc": "typedoc --mode modules --excludeExternals --out build/typedoc src"
+  },
+  "engines": {
+    "node": "9.x.x",
+    "npm": "5.x.x"
+  }
+}
