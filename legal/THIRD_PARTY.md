@@ -8,17 +8,17 @@ This page details all runtime OSS dependencies of `@atomist/card-automation`.
 
 | License | Count |
 |---------|-------|
-|AFLv2.1|1|
-|Apache-2.0|20|
-|BSD-2-Clause|10|
-|BSD-3-Clause|26|
-|BSD|6|
-|Custom: https://github.com/douglascrockford/JSON-js|1|
-|GPL-3.0|4|
-|ISC|37|
-|MIT|495|
-|Public Domain|1|
-|Unlicense|2|
+|[AFLv2.1](#aflv21)|1|
+|[Apache-2.0](#apache-20)|20|
+|[BSD-2-Clause](#bsd-2-clause)|10|
+|[BSD-3-Clause](#bsd-3-clause)|26|
+|[BSD](#bsd)|6|
+|[Custom: https://github.com/douglascrockford/JSON-js](#custom-httpsgithubcomdouglascrockfordjson-js)|1|
+|[GPL-3.0](#gpl-30)|4|
+|[ISC](#isc)|37|
+|[MIT](#mit)|495|
+|[Public Domain](#public-domain)|1|
+|[Unlicense](#unlicense)|2|
 
 #### AFLv2.1
 
