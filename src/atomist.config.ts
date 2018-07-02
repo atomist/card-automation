@@ -35,7 +35,7 @@ export const configuration: Configuration = {
                 appId: cfg.pusher.appId,
                 key: cfg.pusher.key,
                 secret: cfg.pusher.secret,
-                cluster: "us2",
+                cluster: cfg.pusher.cluster,
                 encrypted: true,
             });
             cfg.pusher = pusher;

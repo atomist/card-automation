@@ -51,7 +51,7 @@ export const pusherCustomizer = (express: exp.Express) => {
         }
 
         const graphClient = new ApolloGraphClient(
-            config.get("endpoints.bruce"),
+            configurationValue<string>("person.url"),
             {
                 Authorization: `Bearer ${auth.credentials}`,
             });
