@@ -107,7 +107,7 @@ type CardActionParameterOption {
 
 type CardActionParameterOptionGroup {
     name: String
-    options: [CardActionParamterOption]
+    options: [CardActionParameterOption]
 }
 
 type Card @rootType {
@@ -125,7 +125,7 @@ type Card @rootType {
     collaborators(login: String): [CardCollaborator]
     events: [CardEvent]
     actions: [CardAction]
-    actionGroups: [CardActionGroups]
+    actionGroups: [CardActionGroup]
     comments: [CardBody]
     reactions: [CardReaction]
     provenance(name: String): [CardProvenance]
