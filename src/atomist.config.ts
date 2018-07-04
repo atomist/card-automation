@@ -25,7 +25,6 @@ export const configuration: Configuration = {
     ingesters: [
         ingester("card"),
         ingester("notification"),
-        ingester("userNotification"),
     ],
     postProcessors: [
         configureLogzio,

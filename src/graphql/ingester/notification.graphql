@@ -1,9 +1,10 @@
 type Notification @rootType {
-    ts: Int
-    key: String @compositeId
+    ts: Int!
+    key: String! @compositeId
     ttl: Int
     post: String
-    contentType: String
-    body: String
+    contentType: String!
+    body: String!
     actions: [CardAction]
+    login: String
 }
