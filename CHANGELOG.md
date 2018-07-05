@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 -   Fixup typos in ingesters. [#1](https://github.com/atomist/card-automation/issues/1)
+-   Login argument on card is not an array. [#3](https://github.com/atomist/card-automation/issues/3)
 
 ## [0.1.0](https://github.com/atomist/automation-client-sidecar-ts/tree/0.1.0) - 2018-02-05
 
