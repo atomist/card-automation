@@ -61,7 +61,7 @@ type CardCorrelation {
     title: String @searchable
     shortTitle: String @searchable
     link: String
-    body: CorrelationBody
+    body: [CorrelationBody]
     ts: Int
 }
 
