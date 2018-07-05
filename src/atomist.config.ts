@@ -19,6 +19,7 @@ import { configureLogzio } from "@atomist/automation-client-ext-logzio";
 import { configureRaven } from "@atomist/automation-client-ext-raven";
 import { ingester } from "@atomist/automation-client/graph/graphQL";
 import * as Pusher from "pusher";
+
 import { pusherCustomizer } from "./web/http";
 
 export const configuration: Configuration = {
