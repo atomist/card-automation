@@ -122,7 +122,7 @@ type Card @rootType {
     body: CardBody
     goalSets: [CardSdmGoalSet]
     correlations: [CardCorrelation]
-    collaborators(login: String): [CardCollaborator]
+    collaborators(login: [String]): [CardCollaborator]
     events: [CardEvent]
     actions: [CardAction]
     actionGroups: [CardActionGroup]
