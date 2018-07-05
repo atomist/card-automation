@@ -5,6 +5,42 @@ type Notification @rootType {
     post: String
     contentType: String!
     body: String!
+    actions: [NotificationAction]
+    recipient(address: [String]): NotifactionRecipient
+}
+
+type NotifactionRecipient {
+    address: String!
+}
+
+type NotificationAction {
+    text: String
+    type: String
+    registration: String
+    command: String
+    role: String
+    parameters: [NotificationActionParameter]
+    parameterName: String
+    parameterOptions: [NotificationActionParameterOption]
+    parameterOptionGroups: [NotificationActionParameterOptionGroup]
+}
+
+type NotificationActionGroup {
+    text: String
     actions: [CardAction]
-    login: String
+}
+
+type NotificationActionParameter {
+    name: String
+    value: String
+}
+
+type NotificationActionParameterOption {
+    name: String
+    value: String
+}
+
+type NotificationActionParameterOptionGroup {
+    name: String
+    options: [NotificationActionParameterOption]
 }

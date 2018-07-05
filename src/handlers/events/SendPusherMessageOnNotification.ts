@@ -38,14 +38,17 @@ export class SendPusherMessageOnNotification implements HandleEvent<OnNotificati
     public handle(e: EventFired<OnNotification.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
         const card = e.data.Notification[0];
 
-        logger.info("Sending notification '%j'", card);
-        this.pusher.trigger(
-            `private-${ctx.teamId}`,
-            "notification_stream",
-            {
-                id: card.id,
-                teamId: ctx.teamId,
-            });
+        if (card.recipient && card.recipient.address) {
+            const address = card.recipient.address;
+            logger.info("Sending notification '%j'", card);
+            this.pusher.trigger(
+                `private-${address}`,
+                "notification_stream",
+                {
+                    id: card.id,
+                    teamId: ctx.teamId,
+                });
+        }
 
         return SuccessPromise;
     }

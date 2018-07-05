@@ -1,5 +1,8 @@
 subscription OnNotification {
   Notification {
     id
+    recipient {
+      address
+    }
   }
 }
