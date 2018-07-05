@@ -18,7 +18,7 @@
     "card"
   ],
   "dependencies": {
-    "@atomist/automation-client": "0.17.4-20180621144910",
+    "@atomist/automation-client": "0.18.0-20180705162739",
     "@atomist/automation-client-ext-logzio": "0.1.0-20180613131229",
     "@atomist/automation-client-ext-raven": "0.1.0-20180613131132",
     "@atomist/slack-messages": "^0.12.1",
