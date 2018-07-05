@@ -6,10 +6,10 @@ type Notification @rootType {
     contentType: String!
     body: String!
     actions: [NotificationAction]
-    recipient(address: [String]): NotifactionRecipient
+    recipient(address: [String]): NotificationRecipient
 }
 
-type NotifactionRecipient {
+type NotificationRecipient {
     address: String!
 }
 
