@@ -17,7 +17,6 @@
 import { logger } from "@atomist/automation-client";
 import { configurationValue } from "@atomist/automation-client/configuration";
 import { ApolloGraphClient } from "@atomist/automation-client/graph/ApolloGraphClient";
-import * as config from "config";
 import * as exp from "express";
 import * as Pusher from "pusher";
 
