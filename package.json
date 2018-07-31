@@ -18,6 +18,7 @@
     "card"
   ],
   "dependencies": {
+    "@atomist/cli": "0.2.2-20180731183747",
     "@atomist/automation-client": "0.19.0-20180731181755",
     "@atomist/automation-client-ext-logzio": "0.1.0-20180613131229",
     "@atomist/automation-client-ext-raven": "0.1.0-20180613131132",
