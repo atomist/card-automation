@@ -14,18 +14,20 @@
  * limitations under the License.
  */
 
-import { Configuration } from "@atomist/automation-client";
+import {
+    Configuration,
+    GraphQL,
+} from "@atomist/automation-client";
 import { configureLogzio } from "@atomist/automation-client-ext-logzio";
 import { configureRaven } from "@atomist/automation-client-ext-raven";
-import { ingester } from "@atomist/automation-client/graph/graphQL";
 import * as Pusher from "pusher";
 
-import { pusherCustomizer } from "./web/http";
+import { pusherCustomizer } from "./lib/web/http";
 
 export const configuration: Configuration = {
     ingesters: [
-        ingester("card"),
-        ingester("notification"),
+        GraphQL.ingester("card"),
+        GraphQL.ingester("notification"),
     ],
     postProcessors: [
         configureLogzio,

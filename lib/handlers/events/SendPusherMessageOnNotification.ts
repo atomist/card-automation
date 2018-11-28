@@ -16,20 +16,19 @@
 
 import {
     EventFired,
-    EventHandler,
-    HandleEvent,
+    GraphQL,
     HandlerContext,
     HandlerResult,
     logger,
     SuccessPromise,
     Value,
 } from "@atomist/automation-client";
-import { subscription } from "@atomist/automation-client/graph/graphQL";
+import { EventHandler } from "@atomist/automation-client/lib/decorators";
+import { HandleEvent } from "@atomist/automation-client/lib/HandleEvent";
 import * as Pusher from "pusher";
 import { OnNotification } from "../../typings/types";
 
-@EventHandler("Send a Pusher message on Notification events",
-    subscription("onNotification"))
+@EventHandler("Send a Pusher message on Notification events", GraphQL.subscription("onNotification"))
 export class SendPusherMessageOnNotification implements HandleEvent<OnNotification.Subscription> {
 
     @Value("pusher")
@@ -46,7 +45,7 @@ export class SendPusherMessageOnNotification implements HandleEvent<OnNotificati
                 "notification_stream",
                 {
                     id: card.id,
-                    teamId: ctx.teamId,
+                    teamId: ctx.workspaceId,
                 });
         }
 

@@ -16,9 +16,9 @@
 
 export function newCardMessage(type: string, ts: number = Date.now()): Card {
     return {
-        key: null,
+        key: undefined,
         ts,
-        ttl: null,
+        ttl: undefined,
         type,
         correlations: [],
         collaborators: [],
@@ -32,7 +32,7 @@ export function isCardMessage(object: any): object is Card {
     return object.title && object.body;
 }
 
-export function addCollaborator(collaborator: { avatar: string, login: string, link: string}, card: Card) {
+export function addCollaborator(collaborator: { avatar: string, login: string, link: string }, card: Card): void {
     if (!card.collaborators) {
         card.collaborators = [];
     }
@@ -102,7 +102,7 @@ export interface Card {
         reaction: string;
     }>;
 
-    provenance?: Array<{name: string}>;
+    provenance?: Array<{ name: string }>;
 }
 
 export interface Goal {
