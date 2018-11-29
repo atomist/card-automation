@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist/automation-client-sidecar-ts/compare/0.1.1...HEAD)
 
+### Changed
+
+-   Update dependencies, package structure, and config. [#4](https://github.com/atomist/card-automation/issues/4)
+
 ## [0.1.1](https://github.com/atomist/automation-client-sidecar-ts/compare/0.1.0...0.1.1) - 2018-08-03
 
 ### Changed
