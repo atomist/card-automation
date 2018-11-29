@@ -28,7 +28,7 @@ import { HandleEvent } from "@atomist/automation-client/lib/HandleEvent";
 import * as Pusher from "pusher";
 import { OnCard } from "../../typings/types";
 
-@EventHandler("Send a Pusher message on Card events", GraphQL.subscription("onCard"))
+@EventHandler("Send a Pusher message on Card events", GraphQL.subscription("OnCard"))
 export class SendPusherMessageOnCard implements HandleEvent<OnCard.Subscription> {
 
     @Value("pusher")

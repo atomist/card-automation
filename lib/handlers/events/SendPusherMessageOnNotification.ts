@@ -28,7 +28,7 @@ import { HandleEvent } from "@atomist/automation-client/lib/HandleEvent";
 import * as Pusher from "pusher";
 import { OnNotification } from "../../typings/types";
 
-@EventHandler("Send a Pusher message on Notification events", GraphQL.subscription("onNotification"))
+@EventHandler("Send a Pusher message on Notification events", GraphQL.subscription("OnNotification"))
 export class SendPusherMessageOnNotification implements HandleEvent<OnNotification.Subscription> {
 
     @Value("pusher")

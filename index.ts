@@ -21,13 +21,12 @@ import {
 import { configureLogzio } from "@atomist/automation-client-ext-logzio";
 import { configureRaven } from "@atomist/automation-client-ext-raven";
 import * as Pusher from "pusher";
-
 import { pusherCustomizer } from "./lib/web/http";
 
 export const configuration: Configuration = {
     ingesters: [
-        GraphQL.ingester("card"),
-        GraphQL.ingester("notification"),
+        GraphQL.ingester({ path: "./lib/graphql/ingester/card" }),
+        GraphQL.ingester({ path: "./lib/graphql/ingester/notification" }),
     ],
     postProcessors: [
         configureLogzio,
