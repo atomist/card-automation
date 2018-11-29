@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 -   Update dependencies, package structure, and config. [#4](https://github.com/atomist/card-automation/issues/4)
 
+### Fixed
+
+-   Fix graphql related changes. [29c5491](https://github.com/atomist/card-automation/commit/29c54913bdee6d771f46c337272ad82d08cd0fc4)
+
 ## [0.1.1](https://github.com/atomist/automation-client-sidecar-ts/compare/0.1.0...0.1.1) - 2018-08-03
 
 ### Changed
