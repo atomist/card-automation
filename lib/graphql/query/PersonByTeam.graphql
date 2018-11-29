@@ -1,0 +1,10 @@
+query PersonByTeam {
+  Person {
+    id
+    name
+    team {
+      id
+      name
+    }
+  }
+}

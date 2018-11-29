@@ -14,22 +14,14 @@
  * limitations under the License.
  */
 
-import { logger } from "@atomist/automation-client";
-import { configurationValue } from "@atomist/automation-client/configuration";
-import { ApolloGraphClient } from "@atomist/automation-client/graph/ApolloGraphClient";
+import {
+    configurationValue,
+    logger,
+} from "@atomist/automation-client";
+import { ApolloGraphClient } from "@atomist/automation-client/lib/graph/ApolloGraphClient";
 import * as exp from "express";
 import * as Pusher from "pusher";
-
-const PersonQuery = `query PersonByIdentiy {
-  personByIdentity {
-    id
-    name
-    team {
-      id
-      name
-    }
-  }
-}`;
+import { PersonByTeam } from "../typings/types";
 
 export const pusherCustomizer = (express: exp.Express) => {
     const authParser = require("express-auth-parser");
@@ -39,7 +31,7 @@ export const pusherCustomizer = (express: exp.Express) => {
     express.use(authParser);
 
     express.options("/v1/auth", cors());
-    express.post("/v1/auth", cors(), parser.urlencoded({ extended: false }),  (req, res) => {
+    express.post("/v1/auth", cors(), parser.urlencoded({ extended: false }), (req, res) => {
         const auth = (req as any).authorization;
 
         const socketId = req.body.socket_id;
@@ -55,9 +47,9 @@ export const pusherCustomizer = (express: exp.Express) => {
                 Authorization: `Bearer ${auth.credentials}`,
             });
 
-        graphClient.executeQuery<any, any>(PersonQuery, {})
+        graphClient.query<PersonByTeam.Query, PersonByTeam.Variables>({ name: "PersonByTeam" })
             .then(result => {
-                if (result.personByIdentity && result.personByIdentity.some(p => p.team && p.team.id === team)) {
+                if (result.Person && result.Person.some(p => p.team && p.team.id === team)) {
                     logger.info("Granting access to channel '%s' for jwt '%s'", channel, auth.credentials);
                     res.send(configurationValue<Pusher>("pusher").authenticate(socketId, channel));
                 } else {
