@@ -120,7 +120,7 @@ type Card @rootType {
     shortTitle: String
     title: CardTitle
     body: CardBody
-    goalSets: [CardSdmGoalSet]
+    goalSets(goalSetId: [String]): [CardSdmGoalSet]
     correlations: [CardCorrelation]
     collaborators(login: [String]): [CardCollaborator]
     events: [CardEvent]
