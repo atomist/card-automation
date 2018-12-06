@@ -37,7 +37,7 @@ export const configuration: Configuration = {
                 key: cfg.pusher.key,
                 secret: cfg.pusher.secret,
                 cluster: cfg.pusher.cluster,
-                encrypted: true,
+                useTLS: true,
             });
             cfg.pusher = pusher;
             return cfg;
