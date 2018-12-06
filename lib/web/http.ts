@@ -21,7 +21,20 @@ import {
 import { ApolloGraphClient } from "@atomist/automation-client/lib/graph/ApolloGraphClient";
 import * as exp from "express";
 import * as Pusher from "pusher";
-import { PersonByTeam } from "../typings/types";
+
+const PersonByIdentityQuery = `query PersonByIdentity {
+  personByIdentity {
+    team {
+      id
+      name
+    }
+  }
+}
+`;
+
+interface PersonByIdentity {
+    personByIdentity: Array<{ team: { id: string, name: string } }>;
+}
 
 export const pusherCustomizer = (express: exp.Express) => {
     const authParser = require("express-auth-parser");
@@ -47,9 +60,9 @@ export const pusherCustomizer = (express: exp.Express) => {
                 Authorization: `Bearer ${auth.credentials}`,
             });
 
-        graphClient.query<PersonByTeam.Query, PersonByTeam.Variables>({ name: "PersonByTeam" })
+        graphClient.query<PersonByIdentity, {}>({ query: PersonByIdentityQuery })
             .then(result => {
-                if (result.Person && result.Person.some(p => p.team && p.team.id === team)) {
+                if (result.personByIdentity && result.personByIdentity.some(p => p.team && p.team.id === team)) {
                     logger.info("Granting access to channel '%s' for jwt '%s'", channel, auth.credentials);
                     res.send(configurationValue<Pusher>("pusher").authenticate(socketId, channel));
                 } else {
