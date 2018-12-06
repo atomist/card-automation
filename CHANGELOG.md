@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/atomist/automation-client-sidecar-ts/compare/0.1.2...HEAD)
 
+### Fixed
+
+-   Move auth query to personByIdentity. [babf618](https://github.com/atomist/card-automation/commit/babf61821feff4e37c47f4afd1253983a583523e)
+
 ## [0.1.2](https://github.com/atomist/automation-client-sidecar-ts/compare/0.1.1...0.1.2) - 2018-12-05
 
 ### Changed
