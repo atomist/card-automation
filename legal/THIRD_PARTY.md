@@ -21,7 +21,7 @@ This page details all runtime OSS dependencies of `@atomist/card-automation`.
 |[GPL-3.0](#gpl-30)|3|
 |[ISC](#isc)|64|
 |[MIT AND BSD-3-Clause](#mit-and-bsd-3-clause)|1|
-|[MIT](#mit)|775|
+|[MIT](#mit)|774|
 |[UNKNOWN](#unknown)|1|
 |[Unlicense](#unlicense)|3|
 |[WTFPL](#wtfpl)|1|
@@ -37,7 +37,7 @@ Apache License 2.0 - [http://www.apache.org/licenses/LICENSE-2.0](http://www.apa
 
 | Name | Version | Publisher | Repository |
 |------|---------|-----------|------------|
-|`@atomist/automation-client-ext-logzio`|`1.0.2`|Atomist|[https://github.com/atomist/automation-client-ext-logzio](https://github.com/atomist/automation-client-ext-logzio)|
+|`@atomist/automation-client-ext-humio`|`0.1.0-master.20190319215111`|Atomist|[https://github.com/atomist/automation-client-ext-humio](https://github.com/atomist/automation-client-ext-humio)|
 |`@atomist/automation-client-ext-raven`|`1.0.2`|Atomist|[https://github.com/atomist/automation-client-ext-raven](https://github.com/atomist/automation-client-ext-raven)|
 |`@atomist/slack-messages`|`1.1.0`|Atomist|[https://github.com/atomist/slack-messages](https://github.com/atomist/slack-messages)|
 |`atob`|`2.1.2`|AJ ONeal|[git://git.coolaj86.com/coolaj86/atob.js](git://git.coolaj86.com/coolaj86/atob.js)|
@@ -47,8 +47,8 @@ Apache License 2.0 - [http://www.apache.org/licenses/LICENSE-2.0](http://www.apa
 |`detect-libc`|`1.0.3`|Lovell Fuller|[https://github.com/lovell/detect-libc](https://github.com/lovell/detect-libc)|
 |`diff-match-patch`|`1.0.4`||[https://github.com/JackuB/diff-match-patch](https://github.com/JackuB/diff-match-patch)|
 |`forever-agent`|`0.6.1`|Mikeal Rogers|[https://github.com/mikeal/forever-agent](https://github.com/mikeal/forever-agent)|
+|`humio`|`0.4.0-beta2`|Thomas Anagrius|[https://github.com/humio/humio-node](https://github.com/humio/humio-node)|
 |`json-to-pretty-yaml`|`1.2.2`||[https://github.com/alexcrist/json-to-pretty-yaml](https://github.com/alexcrist/json-to-pretty-yaml)|
-|`logzio-nodejs`|`0.4.18`|Gilly Barr|[https://github.com/logzio/logzio-nodejs](https://github.com/logzio/logzio-nodejs)|
 |`long`|`4.0.0`|Daniel Wirtz|[https://github.com/dcodeIO/long.js](https://github.com/dcodeIO/long.js)|
 |`oauth-sign`|`0.9.0`|Mikeal Rogers|[https://github.com/mikeal/oauth-sign](https://github.com/mikeal/oauth-sign)|
 |`rc`|`1.2.8`|Dominic Tarr|[https://github.com/dominictarr/rc](https://github.com/dominictarr/rc)|
@@ -712,7 +712,6 @@ MIT License - [http://www.opensource.org/licenses/MIT](http://www.opensource.org
 |`load-json-file`|`5.2.0`|Sindre Sorhus|[https://github.com/sindresorhus/load-json-file](https://github.com/sindresorhus/load-json-file)|
 |`locate-path`|`3.0.0`|Sindre Sorhus|[https://github.com/sindresorhus/locate-path](https://github.com/sindresorhus/locate-path)|
 |`lodash._reinterpolate`|`3.0.0`|John-David Dalton|[https://github.com/lodash/lodash](https://github.com/lodash/lodash)|
-|`lodash.assign`|`4.2.0`|John-David Dalton|[https://github.com/lodash/lodash](https://github.com/lodash/lodash)|
 |`lodash.debounce`|`4.0.8`|John-David Dalton|[https://github.com/lodash/lodash](https://github.com/lodash/lodash)|
 |`lodash.flatten`|`4.4.0`|John-David Dalton|[https://github.com/lodash/lodash](https://github.com/lodash/lodash)|
 |`lodash.get`|`4.4.2`|John-David Dalton|[https://github.com/lodash/lodash](https://github.com/lodash/lodash)|
