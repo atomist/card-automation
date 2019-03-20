@@ -18,7 +18,7 @@ import {
     Configuration,
     GraphQL,
 } from "@atomist/automation-client";
-import { configureLogzio } from "@atomist/automation-client-ext-logzio";
+import { configureHumio } from "@atomist/automation-client-ext-humio";
 import { configureRaven } from "@atomist/automation-client-ext-raven";
 import * as Pusher from "pusher";
 import { pusherCustomizer } from "./lib/web/http";
@@ -29,7 +29,7 @@ export const configuration: Configuration = {
         GraphQL.ingester({ path: "./lib/graphql/ingester/notification" }),
     ],
     postProcessors: [
-        configureLogzio,
+        configureHumio,
         configureRaven,
         async cfg => {
             const pusher = new Pusher({
