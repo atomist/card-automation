@@ -45,7 +45,6 @@ export const pusherCustomizer = (express: exp.Express) => {
     const cookieParser = require("cookie-parser");
 
     express.use(authParser);
-    express.use(cookieParser);
 
     const staging = configurationValue<Configuration>().endpoints.auth.includes("staging");
 
@@ -57,7 +56,7 @@ export const pusherCustomizer = (express: exp.Express) => {
     };
 
     express.options("/v1/auth", cors(corsOptions));
-    express.post("/v1/auth", cors(corsOptions), parser.urlencoded({ extended: false }), (req, res) => {
+    express.post("/v1/auth", cors(corsOptions), cookieParser(), parser.urlencoded({ extended: false }), (req, res) => {
         let creds: string;
         if (!!req.cookies && !!req.cookies.access_token) {
             creds = req.cookies.access_token;
