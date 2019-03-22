@@ -15,10 +15,12 @@
  */
 
 import {
+    Configuration,
     configurationValue,
     logger,
 } from "@atomist/automation-client";
 import { ApolloGraphClient } from "@atomist/automation-client/lib/graph/ApolloGraphClient";
+import { CorsOptions } from "cors";
 import * as exp from "express";
 import * as Pusher from "pusher";
 
@@ -40,12 +42,28 @@ export const pusherCustomizer = (express: exp.Express) => {
     const authParser = require("express-auth-parser");
     const cors = require("cors");
     const parser = require("body-parser");
+    const cookieParser = require("cookie-parser");
 
     express.use(authParser);
+    express.use(cookieParser);
 
-    express.options("/v1/auth", cors());
-    express.post("/v1/auth", cors(), parser.urlencoded({ extended: false }), (req, res) => {
-        const auth = (req as any).authorization;
+    const staging = configurationValue<Configuration>().endpoints.auth.includes("staging");
+
+    const corsOptions: CorsOptions = {
+        origin: staging ? "https://app-staging.atomist.services" : "https://app.atomist.com",
+        credentials: true,
+        allowedHeaders: ["x-requested-with", "authorization", "Content-Type", "Authorization", "credential", "X-XSRF-TOKEN"],
+        exposedHeaders: "*",
+    };
+
+    express.options("/v1/auth", cors(corsOptions));
+    express.post("/v1/auth", cors(corsOptions), parser.urlencoded({ extended: false }), (req, res) => {
+        let creds: string;
+        if (!!req.cookies && !!req.cookies.access_token) {
+            creds = req.cookies.access_token;
+        } else {
+            creds = (req as any).authorization.credentials;
+        }
 
         const socketId = req.body.socket_id;
         const channel = req.body.channel_name;
@@ -57,21 +75,21 @@ export const pusherCustomizer = (express: exp.Express) => {
         const graphClient = new ApolloGraphClient(
             configurationValue<string>("person.url"),
             {
-                Authorization: `Bearer ${auth.credentials}`,
+                Authorization: `Bearer ${creds}`,
             });
 
         graphClient.query<PersonByIdentity, {}>({ query: PersonByIdentityQuery })
             .then(result => {
                 if (result.personByIdentity && result.personByIdentity.some(p => p.team && p.team.id === team)) {
-                    logger.info("Granting access to channel '%s' for jwt '%s'", channel, auth.credentials);
+                    logger.info("Granting access to channel '%s' for jwt '%s'", channel, creds);
                     res.send(configurationValue<Pusher>("pusher").authenticate(socketId, channel));
                 } else {
-                    logger.info("Denying access to channel '%s' for jwt '%s'", channel, auth.credentials);
+                    logger.info("Denying access to channel '%s' for jwt '%s'", channel, creds);
                     res.sendStatus(403);
                 }
             })
             .catch(err => {
-                logger.warn("Error granting access to channel '%s' for jwt '%s'", channel, auth.credentials);
+                logger.warn("Error granting access to channel '%s' for jwt '%s'", channel, creds);
                 logger.warn(err);
                 res.sendStatus(403);
             });
