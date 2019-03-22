@@ -46,7 +46,7 @@ export const pusherCustomizer = (express: exp.Express) => {
 
     express.use(authParser);
 
-    const staging = configurationValue<Configuration>().endpoints.auth.includes("staging");
+    const staging = configurationValue<Configuration>().endpoints.api.includes("staging");
 
     const corsOptions: CorsOptions = {
         origin: staging ? "https://app-staging.atomist.services" : "https://app.atomist.com",
