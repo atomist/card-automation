@@ -52,7 +52,7 @@ export const pusherCustomizer = (express: exp.Express) => {
     const corsOptions: CorsOptions = {
         origin: staging ? "https://app-staging.atomist.services" : "https://app.atomist.com",
         credentials: true,
-        allowedHeaders: ["x-requested-with", "authorization", "Content-Type", "Authorization", "credential", "X-XSRF-TOKEN"],
+        allowedHeaders: ["x-requested-with", "authorization", "content-type", "credential", "X-XSRF-TOKEN"],
         exposedHeaders: "*",
     };
 
