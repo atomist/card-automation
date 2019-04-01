@@ -34,7 +34,7 @@ import {
 } from "../../typings/types";
 
 @EventHandler("Send a Pusher message on ScmProvider events", GraphQL.subscription("OnScmProvider"))
-export class SendPusherMessageOnResourceProvider implements HandleEvent<OnScmProvider.Subscription> {
+export class SendPusherMessageOnScmProvider implements HandleEvent<OnScmProvider.Subscription> {
 
     @Value("pusher")
     public pusher: Pusher;

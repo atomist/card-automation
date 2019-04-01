@@ -1,4 +1,4 @@
-subscription onKubernetesClusterProvider {
+subscription OnKubernetesClusterProvider {
     KubernetesClusterProvider {
         __typename,
         id

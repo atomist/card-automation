@@ -1,4 +1,4 @@
-subscription onDockerRegistryProvider {
+subscription OnDockerRegistryProvider {
     DockerRegistryProvider {
         __typename,
         id

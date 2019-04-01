@@ -1,4 +1,4 @@
-subscription onScmProvider {
+subscription OnScmProvider {
     SCMProvider {
         __typename,
         id
