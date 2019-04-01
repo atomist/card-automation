@@ -1,0 +1,9 @@
+subscription onDockerRegistryProvider {
+    DockerRegistryProvider {
+        __typename,
+        id
+        state {
+            name
+        }
+    }
+}

@@ -1,0 +1,9 @@
+subscription onScmProvider {
+    SCMProvider {
+        __typename,
+        id
+        state {
+            name
+        }
+    }
+}

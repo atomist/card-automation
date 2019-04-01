@@ -1,0 +1,9 @@
+subscription onBinaryRepositoryProvider {
+    BinaryRepositoryProvider {
+        __typename,
+        id
+        state {
+            name
+        }
+    }
+}
