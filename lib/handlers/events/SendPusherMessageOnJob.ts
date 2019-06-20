@@ -45,6 +45,7 @@ export class SendPusherMessageOnJob implements HandleEvent<OnJob.Subscription> {
             {
                 id: job.id,
                 name: job.name,
+                description: job.description,
                 owner: job.owner,
                 completed: job.completedCount,
                 total: job.jobCount,
