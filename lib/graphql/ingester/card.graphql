@@ -83,6 +83,7 @@ type CardAction {
     type: String
     registration: String
     command: String
+    confirm: CardActionConfirmation
     role: String
     parameters: [CardActionParameter]
     parameterName: String
@@ -129,4 +130,11 @@ type Card @rootType {
     comments: [CardBody]
     reactions: [CardReaction]
     provenance(name: String): [CardProvenance]
+}
+
+type CardActionConfirmation {
+    title: String
+    body: String
+    ok: String
+    dismiss: String
 }
