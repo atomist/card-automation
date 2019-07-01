@@ -22,6 +22,7 @@ import {
 import { ApolloGraphClient } from "@atomist/automation-client/lib/graph/ApolloGraphClient";
 import { CorsOptions } from "cors";
 import * as exp from "express";
+import * as _ from "lodash";
 import * as Pusher from "pusher";
 
 const PersonByIdentityQuery = `query PersonByIdentity {
@@ -46,10 +47,10 @@ export const pusherCustomizer = (express: exp.Express) => {
 
     express.use(authParser);
 
-    const staging = configurationValue<Configuration>().endpoints.api.includes("staging");
+    const origin = _.get(configurationValue<Configuration>(), "cors.origin", []);
 
     const corsOptions: CorsOptions = {
-        origin: staging ? "https://app-staging.atomist.services" : "https://app.atomist.com",
+        origin,
         credentials: true,
         allowedHeaders: ["x-requested-with", "authorization", "content-type", "credential", "X-XSRF-TOKEN"],
         exposedHeaders: "*",
