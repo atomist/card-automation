@@ -24,16 +24,17 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
-    "@atomist/automation-client": "1.5.4-master.20190618091503",
+    "@atomist/automation-client": "1.6.0-master.20190704120909",
     "@atomist/automation-client-ext-humio": "1.0.3-master.20190319172045",
     "@atomist/automation-client-ext-raven": "^1.0.2",
-    "@types/node": "^12.0.8",
+    "@types/node": "^12.0.12",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-auth-parser": "^0.1.2",
-    "pusher": "^2.2.0"
+    "lodash": "^4.17.11",
+    "pusher": "^2.2.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.7",
@@ -45,7 +46,7 @@
     "rimraf": "^2.6.3",
     "supervisor": "^0.12.0",
     "ts-node": "^8.3.0",
-    "tslint": "^5.17.0",
+    "tslint": "^5.18.0",
     "typedoc": "^0.14.2",
     "typescript": "^3.5.2"
   },
