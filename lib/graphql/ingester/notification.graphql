@@ -7,6 +7,7 @@ type Notification @rootType {
     body: String!
     actions: [NotificationAction]
     recipient(address: [String]): NotificationRecipient
+    correlationId: String!
 }
 
 type NotificationRecipient {
