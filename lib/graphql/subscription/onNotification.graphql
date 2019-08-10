@@ -4,5 +4,6 @@ subscription OnNotification {
     recipient {
       address
     }
+    correlationId
   }
 }

@@ -45,6 +45,7 @@ export class SendPusherMessageOnNotification implements HandleEvent<OnNotificati
                 "notification_stream",
                 {
                     id: card.id,
+                    correlationId: card.correlationId,
                     teamId: ctx.workspaceId,
                 });
         }
