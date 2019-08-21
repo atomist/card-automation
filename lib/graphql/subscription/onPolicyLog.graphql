@@ -1,0 +1,7 @@
+subscription OnPolicyLog {
+    PolicyLog {
+        id
+        name
+        type
+    }
+}
