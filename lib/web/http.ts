@@ -47,10 +47,10 @@ export const pusherCustomizer = (express: exp.Express) => {
 
     express.use(authParser);
 
-    const origin = _.get(configurationValue<Configuration>(), "cors.origin", []);
+    const origin = _.get(configurationValue<Configuration>(), "cors.origin", "") as string;
 
     const corsOptions: CorsOptions = {
-        origin,
+        origin: origin.split(","),
         credentials: true,
         allowedHeaders: ["x-requested-with", "authorization", "content-type", "credential", "X-XSRF-TOKEN"],
         exposedHeaders: "*",
