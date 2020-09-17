@@ -25,8 +25,6 @@
   "types": "./index.d.ts",
   "dependencies": {
     "@atomist/automation-client": "^1.7.0",
-    "@atomist/automation-client-ext-humio": "1.0.3-master.20190319172045",
-    "@atomist/automation-client-ext-raven": "^1.0.2",
     "@types/node": "^12.7.5",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
