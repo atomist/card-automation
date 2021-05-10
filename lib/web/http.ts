@@ -65,6 +65,7 @@ export const pusherCustomizer = (express: exp.Express) => {
             creds = (req as any).authorization.credentials;
         }
 
+        const originHeader = req.get("origin");
         const socketId = req.body.socket_id;
         const channel = req.body.channel_name;
         let team = channel.slice("private-".length);
@@ -82,7 +83,11 @@ export const pusherCustomizer = (express: exp.Express) => {
             .then(result => {
                 if (result.personByIdentity && result.personByIdentity.some(p => p.team && p.team.id === team)) {
                     logger.info("Granting access to channel '%s'", channel);
-                    res.send(configurationValue<Pusher>("pusher").authenticate(socketId, channel));
+                    if (originHeader.includes("dso")) {
+                        res.send(configurationValue<Pusher>("dso.pusher").authenticate(socketId, channel));
+                    } else if (originHeader.includes("app")) {
+                        res.send(configurationValue<Pusher>("app.pusher").authenticate(socketId, channel));
+                    }
                 } else {
                     logger.info("Denying access to channel '%s' for jwt '%s'", channel, creds);
                     res.sendStatus(403);

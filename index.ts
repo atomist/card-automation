@@ -28,14 +28,21 @@ export const configuration: Configuration = {
     ],
     postProcessors: [
         async cfg => {
-            const pusher = new Pusher({
-                appId: cfg.pusher.appId,
-                key: cfg.pusher.key,
-                secret: cfg.pusher.secret,
-                cluster: cfg.pusher.cluster,
+            cfg.pusher.app = new Pusher({
+                appId: cfg.pusher.app.appId,
+                key: cfg.pusher.app.key,
+                secret: cfg.pusher.app.secret,
+                cluster: cfg.pusher.app.cluster,
                 useTLS: true,
             });
-            cfg.pusher = pusher;
+
+            cfg.pusher.dso = new Pusher({
+                appId: cfg.pusher.dso.appId,
+                key: cfg.pusher.dso.key,
+                secret: cfg.pusher.dso.secret,
+                cluster: cfg.pusher.dso.cluster,
+                useTLS: true,
+            });
             return cfg;
         },
     ],
