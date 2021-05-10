@@ -82,11 +82,11 @@ export const pusherCustomizer = (express: exp.Express) => {
         graphClient.query<PersonByIdentity, {}>({ query: PersonByIdentityQuery })
             .then(result => {
                 if (result.personByIdentity && result.personByIdentity.some(p => p.team && p.team.id === team)) {
-                    logger.info("Granting access to channel '%s'", channel);
+                    logger.info("Granting access to channel '%s' for origin '%s'", channel, originHeader);
                     if (originHeader.includes("dso")) {
-                        res.send(configurationValue<Pusher>("dso.pusher").authenticate(socketId, channel));
+                        res.send(configurationValue<Pusher>("pusher.dso").authenticate(socketId, channel));
                     } else if (originHeader.includes("app")) {
-                        res.send(configurationValue<Pusher>("app.pusher").authenticate(socketId, channel));
+                        res.send(configurationValue<Pusher>("pusher.app").authenticate(socketId, channel));
                     }
                 } else {
                     logger.info("Denying access to channel '%s' for jwt '%s'", channel, creds);
