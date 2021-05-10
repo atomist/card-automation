@@ -3,7 +3,6 @@
 .vscode/
 **/*~
 **/.#*
-.git*
 .npm*
 .travis.yml
 .atomist/
@@ -18,6 +17,5 @@ scripts/
 src/
 test/
 CO*.md
-ts*.json
 **/*.log
 **/*.txt
