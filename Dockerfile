@@ -11,7 +11,7 @@ RUN npm ci --no-optional && \
     rm -rf node_modules .git
 
 # Set up runtime container
-FROM atomist/sdm-base:0.2.1
+FROM atomist/sdm-base:0.2.1@sha256:a37329259058b43d390c6efb1622a050d564412c422e54fc9eac9aa679b27c0d
 
 COPY package.json package-lock.json ./
 
