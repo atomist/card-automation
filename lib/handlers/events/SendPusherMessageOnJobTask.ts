@@ -32,7 +32,7 @@ import { OnJobTask } from "../../typings/types";
 @EventHandler("Send a Pusher message on AtmJob events", GraphQL.subscription("OnJobTask"))
 export class SendPusherMessageOnJobTask implements HandleEvent<OnJobTask.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public async handle(e: EventFired<OnJobTask.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {

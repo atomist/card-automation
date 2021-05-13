@@ -31,7 +31,7 @@ import { OnPolicyLog } from "../../typings/types";
 @EventHandler("Send a Pusher message on PolicyLog events", GraphQL.subscription("OnPolicyLog"))
 export class SendPusherMessageOnPolicyLog implements HandleEvent<OnPolicyLog.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public async handle(e: EventFired<OnPolicyLog.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {

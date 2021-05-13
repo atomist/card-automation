@@ -31,7 +31,7 @@ import { OnCard } from "../../typings/types";
 @EventHandler("Send a Pusher message on Card events", GraphQL.subscription("OnCard"))
 export class SendPusherMessageOnCard implements HandleEvent<OnCard.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnCard.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {

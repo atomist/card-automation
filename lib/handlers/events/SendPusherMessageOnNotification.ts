@@ -31,7 +31,7 @@ import { OnNotification } from "../../typings/types";
 @EventHandler("Send a Pusher message on Notification events", GraphQL.subscription("OnNotification"))
 export class SendPusherMessageOnNotification implements HandleEvent<OnNotification.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnNotification.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {

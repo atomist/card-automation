@@ -36,7 +36,7 @@ import {
 @EventHandler("Send a Pusher message on ScmProvider events", GraphQL.subscription("OnScmProvider"))
 export class SendPusherMessageOnScmProvider implements HandleEvent<OnScmProvider.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnScmProvider.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
@@ -48,7 +48,7 @@ export class SendPusherMessageOnScmProvider implements HandleEvent<OnScmProvider
 @EventHandler("Send a Pusher message on KubernetesClusterProvider events", GraphQL.subscription("OnKubernetesClusterProvider"))
 export class SendPusherMessageOnKubernetesClusterProvider implements HandleEvent<OnKubernetesClusterProvider.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnKubernetesClusterProvider.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
@@ -60,7 +60,7 @@ export class SendPusherMessageOnKubernetesClusterProvider implements HandleEvent
 @EventHandler("Send a Pusher message on DockerRegistryProvider events", GraphQL.subscription("OnDockerRegistryProvider"))
 export class SendPusherMessageOnDockerRegistryProvider implements HandleEvent<OnDockerRegistryProvider.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnDockerRegistryProvider.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
@@ -72,7 +72,7 @@ export class SendPusherMessageOnDockerRegistryProvider implements HandleEvent<On
 @EventHandler("Send a Pusher message on BinaryRepositoryProvider events", GraphQL.subscription("OnBinaryRepositoryProvider"))
 export class SendPusherMessageOnBinaryRepositoryProvider implements HandleEvent<OnBinaryRepositoryProvider.Subscription> {
 
-    @Value("pusher")
+    @Value("pusher.app")
     public pusher: Pusher;
 
     public handle(e: EventFired<OnBinaryRepositoryProvider.Subscription>, ctx: HandlerContext): Promise<HandlerResult> {
